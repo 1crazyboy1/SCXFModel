@@ -192,8 +192,29 @@ namespace SCXFModel
 
         private void Customer1()
         {
+            while (true)
+            {
+                if (NeedStop == true) break;
+                Thread.Sleep(100);
+                lock (this)
+                {
+                    if (RandomList.Count == 0) continue;
+                    if (RandomList.ElementAt(0) % 2 == 0)
+                    {
+                        textBox1.Text += RandomList.ElementAt(0).ToString() + "\r\n";
+                        RandomList.RemoveAt(0);
+                        textBox1.Focus();//获取焦点
+                        textBox1.Select(this.textBox1.TextLength, 0);//光标定位到文本最后
+                        textBox1.ScrollToCaret();//滚动到光标处
 
+                    }
+
+                }
+            }
+
+          
         }
+
 
         private void Customer2()
         {
